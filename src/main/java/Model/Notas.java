@@ -64,15 +64,15 @@ public class Notas {
     private Conexao conexao;
     String query = "";
     
-    public void incluirNota() throws ClassNotFoundException, SQLException {
+    public void incluirNota(int codAluno, int codDisc, float notaValor) throws ClassNotFoundException, SQLException {
     	String query ="insert into notas(codAluno, codDisciplina, vlrNota) values (?,?,?)";
         
 		try {
 			conexao = new Conexao();
 	       	PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
-        	stm.setInt(1, this.codAluno);
-        	stm.setInt(2, this.codDisciplina);
-        	stm.setFloat(3, this.vlrNota);
+        	stm.setInt(1, codAluno);
+        	stm.setInt(2,codDisc);
+        	stm.setFloat(3, notaValor);
         	stm.execute();
         	this.conexao.commit();
         	this.conexao.close();
