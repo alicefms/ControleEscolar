@@ -45,8 +45,8 @@
               		<td><% out.write(a.getNomeById((n.getCodAluno()))); %></td>
               		<td><% out.write(d.getDescById((n.getCodDisciplina()))); %></td>
                 	<td><% out.write("" + n.getVlrNota()); %></td>
-                    <td> <i class="far fa-edit"     ;style="color:blue"></i></td>
-                   <td>  <i class="far fa-trash-alt"></i>  </td>
+                    <td> <a href ="../Telas/NotasAlterar.jsp?id=<%=n.getCodNota()%>"  ><i class="far fa-edit"     ;style="color:blue"></i> </a></td>
+                    <td> <a href ="NotasExclui.jsp?id=<%=n.getCodNota()%>"><i class="far fa-trash-alt"></i> </a></td>
                 </tr>
                 <%}%>
             </tbody>

@@ -5,12 +5,11 @@
 
 
 <%
-	int cAluno = Integer.parseInt(request.getParameter("codAluno"));
-	int cDisc = Integer.parseInt(request.getParameter("codDisciplina"));
+	int id = Integer.parseInt(request.getParameter("id"));
 	float nota = Float.parseFloat(request.getParameter("nota"));
 	
 	Notas n = new Notas();
-	n.incluirNota(cAluno, cDisc, nota);
-    out.write("Nota Inserida com sucesso");
+	n.alterarNota(id, nota);
+    out.write("Nota Alterada com sucesso");
    
 %>
