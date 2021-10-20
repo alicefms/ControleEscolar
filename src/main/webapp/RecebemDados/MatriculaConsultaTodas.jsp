@@ -27,6 +27,13 @@
         Disciplina d = new Disciplina();
             List<Matricula> listaMatriculas = mat.consultarMatriculas();
         %>
+        
+        <label class="mensagem" id="msg" style="color: red">
+                    <%
+                        if(request.getParameter("mensagem") != null)
+                            out.write(request.getParameter("mensagem"));  
+                    %>
+                </label>
         <table id="consulta">
             <!-- cabecalho da tabela -->
             <thead>

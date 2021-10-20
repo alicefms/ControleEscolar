@@ -138,5 +138,22 @@ public class Notas {
     	}
         
     }
+    
+    public boolean checkAlunoDisciplina(int aluno, int disciplina) throws SQLException, ClassNotFoundException {
+    	query= "select codMatricula from matricula where codAluno = ? and codDisciplina = ?";
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, aluno);
+    		stm.setInt(2, disciplina);
+    		ResultSet res = stm.executeQuery();
+    		if (res.next()) {
+    			return true;
+    		}else return false;
+    		
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
 
 }

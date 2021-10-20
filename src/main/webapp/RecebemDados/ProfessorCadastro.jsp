@@ -9,6 +9,6 @@
 	Professor p = new Professor();
 	p.incluirProfessor(nomeProf, ativo);
     
-    out.write("Professor adicionado");
+	response.sendRedirect("ProfessorConsultaTodos.jsp?mensagem=Status Alterado com sucesso");
    
 %>

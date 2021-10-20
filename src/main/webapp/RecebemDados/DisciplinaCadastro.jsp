@@ -10,7 +10,7 @@
 
 	Disciplina d = new Disciplina();
 	d.incluirDisciplina(codProfessor,descDisciplina, cargaHoraria, ativa);
-	 response.sendRedirect("ProfessorConsultaTodos.jsp?mensagem=Disciplina cadastrada com sucesso");
+	 response.sendRedirect("DisciplinaConsultaTodas.jsp?mensagem=Disciplina cadastrada com sucesso");
     
    
 %>

@@ -9,8 +9,10 @@
 	int cDisc = Integer.parseInt(request.getParameter("codDisciplina"));
 	float nota = Float.parseFloat(request.getParameter("nota"));
 	
+	
 	Notas n = new Notas();
+	if (n.checkAlunoDisciplina(cAluno, cDisc)){
 	n.incluirNota(cAluno, cDisc, nota);
-    out.write("Nota Inserida com sucesso");
-   
+	response.sendRedirect("NotasConsultaTodas.jsp?mensagem=Nota cadastrada com sucesso");}
+	else response.sendRedirect("../Telas/NotasCadastrar.jsp?mensagem=O aluno não está matriculado na disciplina");
 %>

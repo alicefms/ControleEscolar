@@ -40,9 +40,10 @@
                     Disciplina disc = new Disciplina();
                     List<Disciplina> listaDisciplinas =disc.consultarDisciplinas();
                     for (Disciplina d : listaDisciplinas){
+                    	if (d.isAtiva()){
                     %>
                     <option value="<%out.write(""+ d.getCodDisciplina()); %>"><%out.write(d.getDescDisciplina()); %></option>
-                    <%} %>
+                    <%}} %>
                     </select>  
                     </div>
                 </fieldset>

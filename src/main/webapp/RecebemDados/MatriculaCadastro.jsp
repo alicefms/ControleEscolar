@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="Model.Matricula"%>
+<%@page import="Model.Aluno"%>
 <%@page import="java.sql.Date"%>
 
 
@@ -12,6 +13,11 @@
 	Matricula m = new Matricula();
 	m.gerarMatricula(cAluno, cDisc, dataMat);
 	
-    out.write("Matricula realizada");
+	//muda status do aluno para matriculado=true
+			
+	Aluno a = new Aluno();
+	a.alterarStatusAluno(cAluno, false);
+	
+	response.sendRedirect("MatriculaConsultaTodas.jsp?mensagem=Matricula gerada com sucesso");
    
 %>

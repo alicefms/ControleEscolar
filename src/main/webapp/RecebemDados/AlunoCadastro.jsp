@@ -19,6 +19,6 @@
 	Aluno a = new Aluno();
 	a.incluirAluno(nomeAluno, cpf, dataNasc, dataMat, nPai, nMae, Resp, telResp, matriculado);
     
-    out.write("Aluno adicionado");
+	response.sendRedirect("AlunoConsultaTodos.jsp?mensagem=Aluno cadastrado com sucesso");
    
 %>

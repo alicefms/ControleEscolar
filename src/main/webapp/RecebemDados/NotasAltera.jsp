@@ -10,6 +10,6 @@
 	
 	Notas n = new Notas();
 	n.alterarNota(id, nota);
-    out.write("Nota Alterada com sucesso");
+	response.sendRedirect("NotasConsultaTodas.jsp?mensagem=Nota alterada com sucesso");
    
 %>

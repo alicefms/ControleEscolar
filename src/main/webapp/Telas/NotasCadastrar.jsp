@@ -15,6 +15,12 @@
     </head>
     
     <body> 
+    <label class="mensagem" id="msg" style="color: red">
+                    <%
+                        if(request.getParameter("mensagem") != null)
+                            out.write(request.getParameter("mensagem"));  
+                    %>
+                </label>
         <div class="container">
             <form id="matchtech" action="../RecebemDados/NotasCadastro.jsp" method="POST">
                 <h3>Cadastro de Nota</h3>
@@ -26,9 +32,10 @@
                     Aluno al = new Aluno();
                     List<Aluno> listaAlunos =al.consultarAlunos();
                     for (Aluno a : listaAlunos){
+                    	if(a.isMatriculado()){
                     %>
                     <option value="<%out.write(""+ a.getCodAluno()); %>"><%out.write(a.getNomeAluno()); %></option>
-                    <%} %>
+                    <%}} %>
                     </select>
                     </div>
                 </fieldset>
@@ -40,9 +47,10 @@
                     Disciplina disc = new Disciplina();
                     List<Disciplina> listaDisciplinas =disc.consultarDisciplinas();
                     for (Disciplina d : listaDisciplinas){
+                    	if (d.isAtiva()){
                     %>
                     <option value="<%out.write(""+ d.getCodDisciplina()); %>"><%out.write(d.getDescDisciplina()); %></option>
-                    <%} %>
+                    <%}} %>
                     </select>  
                     </div>
                 </fieldset>

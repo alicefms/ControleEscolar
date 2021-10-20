@@ -25,9 +25,10 @@
                     Professor prof = new Professor();
                     List<Professor> listaProfessores = prof.consultarProfessores();
                     for (Professor p : listaProfessores){
+                    	if (p.isAtivo()){
                     %>
                     <option value="<%out.write(""+ p.getCodProfessor()); %>"><%out.write(p.getNomeProfessor()); %></option>
-                    <%} %>
+                    <%}} %>
                     
                     </select>
                       
