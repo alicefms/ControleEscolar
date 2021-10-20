@@ -16,7 +16,7 @@
     
     <body> 
         <div class="container">
-            <form id="matchtech" action="../RecebemDados/MatriculaCadastro.jsp" method="POST">
+            <form id="matchtech" action="../RecebemDados/NotasCadastro.jsp" method="POST">
                 <h3>Cadastro de Nota</h3>
                 <p></p>
                 <fieldset> 

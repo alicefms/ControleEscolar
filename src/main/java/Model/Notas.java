@@ -116,7 +116,7 @@ public class Notas {
         }
     }
 
-    public List<Notas> consultarNota() throws SQLException, ClassNotFoundException {
+    public List<Notas> consultarNotas() throws SQLException, ClassNotFoundException {
     	query="select * from notas";
     	try {
     		conexao = new Conexao();
