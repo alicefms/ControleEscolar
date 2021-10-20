@@ -22,7 +22,7 @@
                 <fieldset> 
                     <label>Aluno</label>
                     <div class="nomecolaborador">
-                        <input id="nomeAluno" name="nomeAluno" type="text" maxlength="30" required size=30 style="text-transform: uppercase">
+                        <input id="nomeAluno" name="nomeAluno" placeholder="Digite o nome do aluno aqui" type="text" maxlength="30" required size=30 style="text-transform: uppercase">
                     </div>
                 </fieldset>
                 

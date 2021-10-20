@@ -21,24 +21,29 @@
             Professor prof = new Professor();
             List<Professor> listaProfessores = prof.consultarProfessores();
         %>
+         <label class="mensagem" id="msg" style="color: red">
+                    <%
+                        if(request.getParameter("mensagem") != null)
+                            out.write(request.getParameter("mensagem"));  
+                    %>
+                </label>
         <table id="consulta">
             <!-- cabecalho da tabela -->
             <thead>
             	<th> Codigo </th>
                 <th> Nome do Professor </th>
                 <th> Ativo </th>
-                <th> Alterar </th>
-                <th> Excluir </th>
+                
+                
             </thead>
             <!-- corpo da tabela -->
             <tbody>
                 <% for (Professor p: listaProfessores) { %>
                 <tr>
                 	<td><% out.write(Integer.toString(p.getCodProfessor())); %></td>
-                    <td><% out.write(p.getNomeProfessor()); %></td>
-                     <td><% out.write(Boolean.toString(p.isAtivo())); %></td>
-                    <td> <i class="far fa-edit"     ;style="color:blue"></i></td>
-                   <td>  <i class="far fa-trash-alt"></i>  </td>
+                    <td><% out.write(p.getNomeProfessor()); %> <a href ="../Telas/ProfessorAlterarNome.jsp?id=<%=p.getCodProfessor()%>"  ><i class="far fa-edit"     ;style="color:blue"></i> </a></td>
+                     <td><% out.write(Boolean.toString(p.isAtivo())); %> <a href ="ProfessorMudaStatus.jsp?id=<%=p.getCodProfessor()%>&ativo=<%=p.isAtivo()%>"><i class="far fa-edit"     ;style="color:blue"></i> </a></td>
+                   
                 </tr>
                 <%}%>
             </tbody>

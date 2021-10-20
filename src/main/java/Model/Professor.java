@@ -111,12 +111,14 @@ public class Professor {
         
     }
 
-    public void alterarStatusProfessor(int id, boolean novoEstado) throws SQLException, ClassNotFoundException {
+    public void alterarStatusProfessor(int id, boolean estadoAnterior) throws SQLException, ClassNotFoundException {
     	query= "update professor set ativo = ? where codProfessor = ?";
+    	if (estadoAnterior == true) estadoAnterior = false;
+    	else estadoAnterior = true;
     	try {
 			conexao = new Conexao();
 	       	PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
-        	stm.setBoolean(1, novoEstado);
+        	stm.setBoolean(1, estadoAnterior);
         	stm.setInt(2, id);
         	stm.execute();
         	this.conexao.commit();
