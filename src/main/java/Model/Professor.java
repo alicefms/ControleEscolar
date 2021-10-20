@@ -1,6 +1,5 @@
 package Model;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -127,6 +126,23 @@ public class Professor {
         	this.conexao.rollback();
         	throw e;
         }
+    }
+    
+    public String getNomeById(int id) throws ClassNotFoundException, SQLException {
+    	query="select nomProfessor from professor where codProfessor = ?";
+    	String nomeProf ="";
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, id);
+    		ResultSet res = stm.executeQuery();
+    		if(res.next()) {
+    			nomeProf = res.getString("nomProfessor");
+    		}
+    		return nomeProf;
+    	}catch (SQLException e) {
+    		throw e;
+    	}
     }
 
 }

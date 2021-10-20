@@ -4,6 +4,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.Notas"%>
+<%@page import="Model.Aluno"%>
+<%@page import="Model.Disciplina"%>
 
 <!DOCTYPE html>
 <html>
@@ -21,6 +23,8 @@
     <body>
         <%
         Notas nota = new Notas();
+        Aluno a = new Aluno();
+        Disciplina d = new Disciplina();
             List<Notas> listaNotas = nota.consultarNotas();
         %>
         <table id="consulta">
@@ -38,8 +42,8 @@
                 <% for (Notas n: listaNotas) { %>
                 <tr>
               		<td><% out.write(Integer.toString(n.getCodNota())); %></td>
-              		<td><% out.write(Integer.toString(n.getCodAluno())); %></td>
-              		<td><% out.write(Integer.toString(n.getCodDisciplina())); %></td>
+              		<td><% out.write(a.getNomeById((n.getCodAluno()))); %></td>
+              		<td><% out.write(d.getDescById((n.getCodDisciplina()))); %></td>
                 	<td><% out.write("" + n.getVlrNota()); %></td>
                     <td> <i class="far fa-edit"     ;style="color:blue"></i></td>
                    <td>  <i class="far fa-trash-alt"></i>  </td>

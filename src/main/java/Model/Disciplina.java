@@ -160,6 +160,25 @@ public class Disciplina {
         	throw e;
         }
     }
+    
+    
+    public String getDescById(int id) throws ClassNotFoundException, SQLException {
+    	query="select descDisciplina from Disciplina where codDisciplina = ?";
+    	String descDisciplina ="";
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, id);
+    		ResultSet res = stm.executeQuery();
+    		if(res.next()) {
+    			descDisciplina = res.getString("descDisciplina");
+    		}
+    		return descDisciplina;
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
+    
 
     public void calcularMedias() {
         // TODO implement here

@@ -235,4 +235,22 @@ public class Aluno {
         	throw e;
         }
     }
+    
+    
+    public String getNomeById(int id) throws ClassNotFoundException, SQLException {
+    	query="select nomeAluno from Aluno where codAluno = ?";
+    	String nomeAl ="";
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, id);
+    		ResultSet res = stm.executeQuery();
+    		if(res.next()) {
+    			nomeAl = res.getString("nomeAluno");
+    		}
+    		return nomeAl;
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
 }

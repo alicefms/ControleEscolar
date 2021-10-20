@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.Disciplina"%>
+<%@page import="Model.Professor"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,12 +21,13 @@
         <%
             Disciplina disc = new Disciplina();
             List<Disciplina> listaDisciplinas = disc.consultarDisciplinas();
+            Professor p = new Professor();
         %>
         <table id="consulta">
             <!-- cabecalho da tabela -->
             <thead>
             	<th> Codigo </th>
-            	<th> Codigo do Professor </th>
+            	<th> Professor </th>
                 <th> Disciplina </th>
                 <th> Carga Horaria </th>
                 <th> Ativa </th>
@@ -37,7 +39,7 @@
                 <% for (Disciplina d: listaDisciplinas) { %>
                 <tr>
               		 <td><% out.write(Integer.toString(d.getCodDisciplina())); %></td>
-                	<td><% out.write(Integer.toString(d.getCodProfessor())); %></td>
+                	<td><% out.write(p.getNomeById(d.getCodProfessor())); %></td>
                     <td><% out.write(d.getDescDisciplina()); %></td>
                     <td><% out.write(Integer.toString(d.getCargaHoraria())); %></td>
                      <td><% out.write(Boolean.toString(d.isAtiva())); %></td>
