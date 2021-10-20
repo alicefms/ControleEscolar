@@ -34,7 +34,6 @@
             	<th> Aluno </th>
                 <th> Disciplina </th>
                 <th> Data de Matricula </th>
-                <th> Alterar </th>
                 <th> Excluir </th>
             </thead>
             <!-- corpo da tabela -->
@@ -45,8 +44,8 @@
               		<td><% out.write(a.getNomeById((m.getCodAluno()))); %></td>
               		<td><% out.write(d.getDescById((m.getCodDisciplina()))); %></td>
                 	<td><% out.write("" + m.getDataMatricula()); %></td>
-                    <td> <i class="far fa-edit"     ;style="color:blue"></i></td>
-                   <td>  <i class="far fa-trash-alt"></i>  </td>
+                    
+                   <td> <a href ="MatriculaExclui.jsp?id=<%=m.getCodMatricula()%>"><i class="far fa-trash-alt"></i> </a>    </td>
                 </tr>
                 <%}%>
             </tbody>

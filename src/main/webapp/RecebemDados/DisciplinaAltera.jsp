@@ -7,10 +7,11 @@
     String descDisciplina = request.getParameter("descricao");
 	int cargaHoraria = Integer.parseInt(request.getParameter("cargaH"));
 	boolean ativa = Boolean.valueOf(request.getParameter("ativo"));
-
+	int id = Integer.parseInt(request.getParameter("id"));
 	Disciplina d = new Disciplina();
-	d.incluirDisciplina(codProfessor,descDisciplina, cargaHoraria, ativa);
-	 response.sendRedirect("ProfessorConsultaTodos.jsp?mensagem=Disciplina cadastrada com sucesso");
+	d.alterarDisciplina(id, codProfessor,descDisciplina, cargaHoraria, ativa);
     
+	 response.sendRedirect("DisciplinaConsultaTodas.jsp?mensagem=Disciplina Alterada com sucesso");
+	    
    
 %>

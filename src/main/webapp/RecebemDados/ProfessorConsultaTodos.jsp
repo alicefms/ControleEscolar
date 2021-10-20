@@ -42,7 +42,7 @@
                 <tr>
                 	<td><% out.write(Integer.toString(p.getCodProfessor())); %></td>
                     <td><% out.write(p.getNomeProfessor()); %> <a href ="../Telas/ProfessorAlterarNome.jsp?id=<%=p.getCodProfessor()%>"  ><i class="far fa-edit"     ;style="color:blue"></i> </a></td>
-                     <td><% out.write(Boolean.toString(p.isAtivo())); %> <a href ="ProfessorMudaStatus.jsp?id=<%=p.getCodProfessor()%>&ativo=<%=p.isAtivo()%>"><i class="far fa-edit"     ;style="color:blue"></i> </a></td>
+                     <td><% out.write(Boolean.toString(p.isAtivo())); %> <a href ="ProfessorMudaStatus.jsp?id=<%=p.getCodProfessor()%>&ativo=<%=p.isAtivo()%>"><i class="fas fa-exchange-alt"></i> </a></td>
                    
                 </tr>
                 <%}%>

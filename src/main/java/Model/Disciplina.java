@@ -144,23 +144,6 @@ public class Disciplina {
     	}
     }
 
-    public void alterarStatusDisciplina(int cDisciplina, boolean ativa) throws ClassNotFoundException, SQLException {
-    	query= "update Disciplina set ativa =? where codDisciplina = ?";
-    	try {
-			conexao = new Conexao();
-	       	PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
-	       	stm.setBoolean(1, ativa);
-        	stm.setInt(2, cDisciplina );
-        	stm.execute();
-        	this.conexao.commit();
-        	this.conexao.close();
-        }catch(SQLException e){
-        	System.out.print(e);
-        	this.conexao.rollback();
-        	throw e;
-        }
-    }
-    
     
     public String getDescById(int id) throws ClassNotFoundException, SQLException {
     	query="select descDisciplina from Disciplina where codDisciplina = ?";
@@ -177,6 +160,25 @@ public class Disciplina {
     	}catch (SQLException e) {
     		throw e;
     	}
+    }
+    
+    public void alterarStatusDisciplina(int id, boolean estadoAnterior) throws SQLException, ClassNotFoundException {
+    	query= "update Disciplina set ativa = ? where codDisciplina = ?";
+    	if (estadoAnterior == true) estadoAnterior = false;
+    	else estadoAnterior = true;
+    	try {
+			conexao = new Conexao();
+	       	PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+        	stm.setBoolean(1, estadoAnterior);
+        	stm.setInt(2, id);
+        	stm.execute();
+        	this.conexao.commit();
+        	this.conexao.close();
+        }catch(SQLException e){
+        	System.out.print(e);
+        	this.conexao.rollback();
+        	throw e;
+        }
     }
     
 

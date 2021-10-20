@@ -23,6 +23,13 @@
         Aluno disc = new Aluno();
             List<Aluno> listaAlunos = disc.consultarAlunos();
         %>
+        
+         <label class="mensagem" id="msg" style="color: red">
+                    <%
+                        if(request.getParameter("mensagem") != null)
+                            out.write(request.getParameter("mensagem"));  
+                    %>
+                </label>
         <table id="consulta">
             <!-- cabecalho da tabela -->
             <thead>
@@ -35,8 +42,9 @@
                 <th> Mae </th>
                 <th> Responsavel </th>
                 <th> Telefone do Responsavel </th>
-                <th> Alterar </th>
-                <th> Excluir </th>
+                <th> Matriculado</th>
+               
+               
             </thead>
             <!-- corpo da tabela -->
             <tbody>
@@ -49,11 +57,10 @@
                 	 <td><% out.write("" + a.getDataMatricula()); %></td>
                 	 <td><% out.write(a.getNomePai()); %></td>
                 	 <td><% out.write(a.getNomeMae()); %></td>
-                	 <td><% out.write(a.getResponsavel()); %></td>
+                	 <td><% out.write(a.getResponsavel()); %> <a href ="../Telas/AlunoAlterar.jsp?id=<%=a.getCodAluno()%>"><i class="far fa-edit"    ></i> </a> </td>
                 	 <td><% out.write(a.getFoneResponsavel()); %></td>
-                    <td><% out.write(Boolean.toString(a.isMatriculado())); %></td>
-                    <td> <i class="far fa-edit"     ;style="color:blue"></i></td>
-                   <td>  <i class="far fa-trash-alt"></i>  </td>
+                    <td><% out.write(Boolean.toString(a.isMatriculado())); %>  <a href ="AlunoMudaStatus.jsp?id=<%=a.getCodAluno()%>&matriculado=<%=a.isMatriculado()%>"><i class="fas fa-exchange-alt"></i> </a> </td>
+                    
                 </tr>
                 <%}%>
             </tbody>

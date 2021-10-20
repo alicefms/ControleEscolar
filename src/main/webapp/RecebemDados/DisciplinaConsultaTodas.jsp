@@ -23,6 +23,13 @@
             List<Disciplina> listaDisciplinas = disc.consultarDisciplinas();
             Professor p = new Professor();
         %>
+        
+        <label class="mensagem" id="msg" style="color: red">
+                    <%
+                        if(request.getParameter("mensagem") != null)
+                            out.write(request.getParameter("mensagem"));  
+                    %>
+                </label>
         <table id="consulta">
             <!-- cabecalho da tabela -->
             <thead>
@@ -32,7 +39,7 @@
                 <th> Carga Horaria </th>
                 <th> Ativa </th>
                 <th> Alterar </th>
-                <th> Excluir </th>
+                
             </thead>
             <!-- corpo da tabela -->
             <tbody>
@@ -42,9 +49,9 @@
                 	<td><% out.write(p.getNomeById(d.getCodProfessor())); %></td>
                     <td><% out.write(d.getDescDisciplina()); %></td>
                     <td><% out.write(Integer.toString(d.getCargaHoraria())); %></td>
-                     <td><% out.write(Boolean.toString(d.isAtiva())); %></td>
-                    <td> <i class="far fa-edit"     ;style="color:blue"></i></td>
-                   <td>  <i class="far fa-trash-alt"></i>  </td>
+                     <td><% out.write(Boolean.toString(d.isAtiva())); %>  <a href ="DisciplinaMudaStatus.jsp?id=<%=d.getCodDisciplina()%>&ativa=<%=d.isAtiva()%>"><i class="fas fa-exchange-alt"></i> </a> </td>
+                    <td> <a href ="../Telas/DisciplinaAlterar.jsp?id=<%=d.getCodDisciplina()%>"><i class="far fa-edit"    ></i> </a> </td>
+                   
                 </tr>
                 <%}%>
             </tbody>

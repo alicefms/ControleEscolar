@@ -179,7 +179,7 @@ public class Aluno {
 			conexao = new Conexao();
 	       	PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
         	stm.setString(1, responsavel);
-        	stm.setString(2, responsavel);
+        	stm.setString(2, foneResponsavel);
         	stm.setInt(3, codAluno);
         	stm.execute();
         	this.conexao.commit();
@@ -221,6 +221,9 @@ public class Aluno {
 
     public void alterarStatusAluno( int codAluno, boolean matriculado) throws SQLException, ClassNotFoundException {
     	query= "update aluno set matriculado =? where codAluno = ?";
+    	
+    	if (matriculado == true) matriculado = false;
+    	else matriculado = true;
     	try {
 			conexao = new Conexao();
 	       	PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
@@ -236,6 +239,7 @@ public class Aluno {
         }
     }
     
+     
     
     public String getNomeById(int id) throws ClassNotFoundException, SQLException {
     	query="select nomeAluno from Aluno where codAluno = ?";
