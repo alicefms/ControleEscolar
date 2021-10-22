@@ -43,6 +43,9 @@
                 <th> Responsavel </th>
                 <th> Telefone do Responsavel </th>
                 <th> Matriculado</th>
+                <th> Disciplinas vinculadas</th>
+                <th> Total de Notas</th>
+                <th> Boletim</th>
                
                
             </thead>
@@ -59,8 +62,10 @@
                 	 <td><% out.write(a.getNomeMae()); %></td>
                 	 <td><% out.write(a.getResponsavel()); %> <a href ="../Telas/AlunoAlterar.jsp?id=<%=a.getCodAluno()%>"><i class="far fa-edit"    ></i> </a> </td>
                 	 <td><% out.write(a.getFoneResponsavel()); %></td>
-                    <td><% out.write(Boolean.toString(a.isMatriculado())); %>  <a href ="AlunoMudaStatus.jsp?id=<%=a.getCodAluno()%>&matriculado=<%=a.isMatriculado()%>"><i class="fas fa-exchange-alt"></i> </a> </td>
-                    
+                   	 <td><% out.write(Boolean.toString(a.isMatriculado())); %>  <a href ="AlunoMudaStatus.jsp?id=<%=a.getCodAluno()%>&matriculado=<%=a.isMatriculado()%>"><i class="fas fa-exchange-alt"></i> </a> </td>
+                     <td> <a href ="AlunoDisciplinas.jsp?id=<%=a.getCodAluno()%>">Listar </a> </td>
+                     <td> <a href ="AlunoNotas.jsp?id=<%=a.getCodAluno()%>">Listar </a> </td>
+                     <td> <a href ="AlunoBoletim.jsp?id=<%=a.getCodAluno()%>">Listar </a> </td>
                 </tr>
                 <%}%>
             </tbody>

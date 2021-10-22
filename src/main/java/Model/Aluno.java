@@ -257,4 +257,58 @@ public class Aluno {
     		throw e;
     	}
     }
+    
+    public ResultSet disciplinasAluno (int id) throws ClassNotFoundException, SQLException {
+    	query = "select  a.nomeAluno, d.descDisciplina, d.cargaHoraria, p.nomProfessor, m.dataMatricula from matricula m \n"
+    			+ "left join aluno a  on a.codAluno = m.codAluno\n"
+    			+ "join disciplina d on d.codDisciplina = m.codDisciplina\n"
+    			+ "join professor p on p.codProfessor = d.codProfessor \n"
+    			+ "where a.codAluno =?";
+    	
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, id);
+    		ResultSet res = stm.executeQuery();
+    		return res;
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
+    
+    public ResultSet NotasAluno (int id) throws ClassNotFoundException, SQLException {
+    	query = "select d.descDisciplina, n.vlrNota from notas n \n"
+    			+ "inner join disciplina d on d.codDisciplina = n.codDisciplina\n"
+    			+ "right join aluno a on a.codAluno = n.codAluno \n"
+    			+ "where a.codAluno =?";
+    	
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, id);
+    		ResultSet res = stm.executeQuery();
+    		return res;
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
+    
+    
+    public ResultSet BoletimAluno (int id) throws ClassNotFoundException, SQLException {
+    	query = "select d.descDisciplina, p.nomProfessor , n.vlrNota from notas n \n"
+    			+ "inner join disciplina d on d.codDisciplina = n.codDisciplina\n"
+    			+ "inner join professor p on d.codProfessor = p.codProfessor \n"
+    			+ "right join aluno a on a.codAluno = n.codAluno \n"
+    			+ "where a.codAluno =?";
+    	
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		stm.setInt(1, id);
+    		ResultSet res = stm.executeQuery();
+    		return res;
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
 }

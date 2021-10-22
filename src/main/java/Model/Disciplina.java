@@ -181,6 +181,20 @@ public class Disciplina {
         }
     }
     
+    public ResultSet diciplinaCargaHoraria() throws SQLException, ClassNotFoundException {
+    	query="select descDisciplina , cargaHoraria from disciplina d";
+    	
+    	try {
+    		conexao = new Conexao();
+    		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
+    		ResultSet res = stm.executeQuery();
+    		return res;
+    		
+    	}catch (SQLException e) {
+    		throw e;
+    	}
+    }
+    
 
     public void calcularMedias() {
         // TODO implement here
