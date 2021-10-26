@@ -56,7 +56,7 @@
               		<td><% out.write(Integer.toString(a.getCodAluno())); %></td>
                 	 <td><% out.write(a.getNomeAluno()); %></td>
                 	 <td><% out.write(a.getCpfAluno()); %></td>
-                	 <td><% out.write("" + a.getDataNascimento()); %></td>
+                	 <td><% out.print( a.getDataNascimento()); %></td>
                 	 <td><% out.write("" + a.getDataMatricula()); %></td>
                 	 <td><% out.write(a.getNomePai()); %></td>
                 	 <td><% out.write(a.getNomeMae()); %></td>

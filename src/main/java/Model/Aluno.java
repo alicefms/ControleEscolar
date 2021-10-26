@@ -264,12 +264,12 @@ public class Aluno {
     			+ "join disciplina d on d.codDisciplina = m.codDisciplina\n"
     			+ "join professor p on p.codProfessor = d.codProfessor \n"
     			+ "where a.codAluno =?";
-    	
+    	ResultSet res = null;
     	try {
     		conexao = new Conexao();
     		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
     		stm.setInt(1, id);
-    		ResultSet res = stm.executeQuery();
+    		res = stm.executeQuery();
     		return res;
     	}catch (SQLException e) {
     		throw e;
@@ -281,12 +281,12 @@ public class Aluno {
     			+ "inner join disciplina d on d.codDisciplina = n.codDisciplina\n"
     			+ "right join aluno a on a.codAluno = n.codAluno \n"
     			+ "where a.codAluno =?";
-    	
+    	ResultSet res = null;
     	try {
     		conexao = new Conexao();
     		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
     		stm.setInt(1, id);
-    		ResultSet res = stm.executeQuery();
+    		res = stm.executeQuery();
     		return res;
     	}catch (SQLException e) {
     		throw e;
@@ -300,12 +300,12 @@ public class Aluno {
     			+ "inner join professor p on d.codProfessor = p.codProfessor \n"
     			+ "right join aluno a on a.codAluno = n.codAluno \n"
     			+ "where a.codAluno =?";
-    	
+    	ResultSet res = null;
     	try {
     		conexao = new Conexao();
     		PreparedStatement stm = this.conexao.getConnection().prepareStatement(query);
     		stm.setInt(1, id);
-    		ResultSet res = stm.executeQuery();
+    		res = stm.executeQuery();
     		return res;
     	}catch (SQLException e) {
     		throw e;

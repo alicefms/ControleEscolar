@@ -24,7 +24,7 @@
         Aluno a = new Aluno();
         ResultSet res = a.NotasAluno(Integer.parseInt(request.getParameter("id")));
         int soma = 0;
-        if (!res.next()){
+        if  ( (res.next() == false) || (res.getString("descDisciplina")== null)){
         	out.write("Este aluno ainda não tem notas cadastradas");
         } else{
         %>

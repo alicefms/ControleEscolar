@@ -25,14 +25,17 @@
         ResultSet res = a.BoletimAluno(Integer.parseInt(request.getParameter("id")));
         int soma = 0;
         int qteNotas = 0;
+
         
-        if (res == null){
-        	out.write("Este aluno ainda não tem notas cadastradas");
+        if ( (res.next() == false) || (res.getString("descDisciplina")== null)){
+        	out.write("Este aluno ainda nao tem notas cadastradas");
+        	
+            
         } else{
         	Date data = new Date(new java.util.Date().getTime());
-        	out.write("------------------------------------------------------------------------------------------" );
-        	out.write("ESCOLA CAPGEMINI MULHER  -CURSO DE FORMAÇÃO DE DEVS- DATA ATUAL: " + data + '\n');
-        	out.write("------------------------------------------------------------------------------------------");
+        	out.write("------------------------------------------------------------------------------------------"+ "<br>" );
+        	out.write("ESCOLA CAPGEMINI MULHER  -CURSO DE FORMAÇÃO DE DEVS- DATA ATUAL: " + data + "<br>");
+        	out.write("------------------------------------------------------------------------------------------"+ "<br>");
         	out.write("ALUNO: "+ a.getNomeById(Integer.parseInt(request.getParameter("id"))) );
         %>
         
@@ -51,22 +54,31 @@
                 <% while(res.next()){ %>
                 <tr>
               		
-                	 <td><% out.write(res.getString("descDisciplina")); %></td>
-                	 <td><% out.write(res.getString("nomProfessor")); %></td>
-                	 <td><% out.write(String.valueOf(res.getInt("vlrNota"))); %></td>
+                	 <td><% out.print(res.getString("descDisciplina")); %></td>
+                	 <td><% out.print(res.getString("nomProfessor")); %></td>
+                	 <td><% out.print(String.valueOf(res.getInt("vlrNota"))); %></td>
                 	 <% soma = soma + res.getInt("vlrNota"); %>
                 	 <% if(res.isLast()){qteNotas= res.getRow();} %>
                 </tr>
                 <%}%>
             </tbody>
         </table>
-        <%
-        float media = (float) soma/qteNotas;
-        out.write("MEDIA : " + media ); 
-        if (media<7.5){
-        out.write("STATUS : REPROVADO"); }
-        else {out.write("STATUS : APROVADO");}}
-        %>
         
+        
+         <%
+        float media = (float) soma/qteNotas;
+        out.write("MEDIA : " + media + "   " + "<br>" );
+        if (media<7.5){
+        %>
+      
+         <label class="mensagem"  style="color: red"> 
+          STATUS : REPROVADO      
+                
+       <%
+        }else{ %>
+        <label class="mensagem"  style="color: blue"> 
+         STATUS : APROVADO
+        <% }}%>
+        </label>
     </body>
 </html>
